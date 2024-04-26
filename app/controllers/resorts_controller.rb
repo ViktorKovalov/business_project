@@ -1,4 +1,4 @@
-class HotelsController < ApplicationController
+class ResortsController < ApplicationController
   # Используется для управления информацией об отелях. Включает действия для отображения списка отелей, а также для
   # показа подробной информации о каждом отеле.
 end
