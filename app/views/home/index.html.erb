@@ -18,7 +18,7 @@
 <% end %>
 
 <h2>Contact Us</h2>
-<%= form_with model: @feedback_user_info, url: feedback_user_infos_path, local: true do |form| %>
+<%= form_with model: @feedback_request, url: feedback_requests_path, local: true do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name, placeholder: "Your Name" %>

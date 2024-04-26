@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :hotels, only: %i[index show]
 
-  resources :feedback_user_infos, only: %i[create]
+  resources :feedback_requests, only: %i[create]
 end
