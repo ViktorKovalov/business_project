@@ -18,18 +18,22 @@
 <% end %>
 
 <h2>Contact Us</h2>
-<%= form_with model: @contact, url: contacts_path, local: true do |form| %>
+<%= form_with model: @feedback_user_info, url: feedback_user_infos_path, local: true do |form| %>
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: "Your Name" %>
   </div>
   <div>
     <%= form.label :email %>
-    <%= form.email_field :email %>
+    <%= form.email_field :email, placeholder: "Your Email" %>
+  </div>
+  <div>
+    <%= form.label :phone_number %>
+    <%= form.number_field :phone_number, placeholder: "Your Phone Number" %>
   </div>
   <div>
     <%= form.label :message %>
-    <%= form.text_area :message %>
+    <%= form.text_area :message, placeholder: "Your Message" %>
   </div>
   <%= form.submit 'Send' %>
 <% end %>

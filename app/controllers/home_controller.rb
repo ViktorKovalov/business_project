@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   # об отелях, отзывы, форму обратной связи и другие общие элементы.
   def index
     @resorts = Resort.all
+    @feedback_user_info = FeedbackUserInfo.new
   end
 
   def show
