@@ -4,36 +4,19 @@
 <h2>Our Resorts:</h2>
 <% @resorts.each do |resort| %>
   <div>
-    <h2><%= link_to resort.title, hotel_path(resort) %></h2>
-    <p>Hotel Location: <%= resort.location %></p>
-    <p>Hotel Description: <%= resort.description %></p>
+    <hr>
+    <h2 style="text-align: center;"><%= link_to resort.title, resort_path(resort) %></h2>
+    <p style="text-align: center;">Hotel Location: <%= resort.location %></p>
+    <p style="text-align: center;">Hotel Description: <%= resort.description %></p>
     <% resort.resting_places.each do |resting_place| %>
-      <h3>Room number: <%= resting_place.room_number %></h3>
-      <p><i>Room Description: <%= resting_place.room_description %></i></p>
-      <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
-      <b>Price per night: <%= resting_place.price_per_night %>$</b>
+      <h3 style="margin-left: 10px">Room number: <%= resting_place.room_number %></h3>
+      <p style="margin-left: 20px"><i>Room Description: <%= resting_place.room_description %></i></p>
+      <p style="margin-left: 20px"><i>Bed capacity: <%= resting_place.bed_count %></i></p>
+      <b style="margin-left: 20px">Price per night: <%= resting_place.price_per_night %>$</b>
     <% end %>
   </div>
-  <br><br>
 <% end %>
 
 <h2>Contact Us</h2>
-<%= form_with model: @feedback_request, url: feedback_requests_path, local: true do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, placeholder: "Your Name" %>
-  </div>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, placeholder: "Your Email" %>
-  </div>
-  <div>
-    <%= form.label :phone_number %>
-    <%= form.number_field :phone_number, placeholder: "Your Phone Number" %>
-  </div>
-  <div>
-    <%= form.label :message %>
-    <%= form.text_area :message, placeholder: "Your Message" %>
-  </div>
-  <%= form.submit 'Send' %>
-<% end %>
+
+<%= render 'forms/feedback' %>

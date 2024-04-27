@@ -1,0 +1,19 @@
+<h2 style="text-align: center;"><%= @resort.title %></h2>
+<p style="text-align: center;">Hotel Location: <%= @resort.location %></p>
+<p style="text-align: center;">Hotel Description: <%= @resort.description %></p>
+
+<b><p style="text-align: center;">Resting Places</p></b>
+<p style="text-align: center; font-size: 60px; margin-top: 5px; margin-bottom: 20px">☟</p>
+
+<!-- Используем flex для размещения по 3 в ряд -->
+<div style="display: flex; flex-wrap: wrap; gap: 20px;"> 
+  <% @resort.resting_places.each do |resting_place| %>
+    <!-- Каждый блок занимает треть ширины, чтобы разместить по 3 в ряд -->
+    <div style="flex: 1 1 30%;"> 
+      <h3>Room number: <%= link_to resting_place.room_number, resort_resting_place_path(@resort, resting_place) %></h3>
+      <p><i>Room Description: <%= resting_place.room_description %></i></p>
+      <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
+      <b>Price per night: <%= resting_place.price_per_night %>$</b>
+    </div>
+  <% end %>
+</div>
