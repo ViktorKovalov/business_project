@@ -5,7 +5,6 @@ ruby '3.1.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
 gem 'bootstrap'
-gem 'bootstrap5-kaminari-views'
 gem 'faker'
 gem 'kaminari'
 gem 'sassc-rails'

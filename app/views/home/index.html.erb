@@ -18,9 +18,7 @@
     </div>
   <% end %>
   
-  <%= paginate @resorts, theme: 'bootstrap-5',
-                   pagination_class: "pagination-lg flex-wrap justify-content-center",
-                   nav_class: "d-inline-block" %>
+  <%= paginate @resorts %>
   <h2>Contact Us</h2>
 
   <%= render 'forms/feedback' %>
