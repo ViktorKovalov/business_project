@@ -1,22 +1,28 @@
 <!-- app/views/home/index.html.erb -->
-<h1>Welcome to Our Resorts</h1>
+<div class='container'>
+  <h1>Welcome to Our Resorts</h1>
 
-<h2>Our Resorts:</h2>
-<% @resorts.each do |resort| %>
-  <div>
-    <hr>
-    <h2 style="text-align: center;"><%= link_to resort.title, resort_path(resort) %></h2>
-    <p style="text-align: center;">Hotel Location: <%= resort.location %></p>
-    <p style="text-align: center;">Hotel Description: <%= resort.description %></p>
-    <% resort.resting_places.each do |resting_place| %>
-      <h3 style="margin-left: 10px">Room number: <%= resting_place.room_number %></h3>
-      <p style="margin-left: 20px"><i>Room Description: <%= resting_place.room_description %></i></p>
-      <p style="margin-left: 20px"><i>Bed capacity: <%= resting_place.bed_count %></i></p>
-      <b style="margin-left: 20px">Price per night: <%= resting_place.price_per_night %>$</b>
-    <% end %>
-  </div>
-<% end %>
+  <h2>Our Resorts:</h2>
+  <% @resorts.each do |resort| %>
+    <div>
+      <hr>
+      <h2 style="text-align: center;"><%= link_to resort.title, resort_path(resort) %></h2>
+      <p style="text-align: center;">Hotel Location: <%= resort.location %></p>
+      <p style="text-align: center;">Hotel Description: <%= resort.description %></p>
+      <% resort.resting_places.each do |resting_place| %>
+        <h3 style="margin-left: 10px">Room number: <%= resting_place.room_number %></h3>
+        <p style="margin-left: 20px"><i>Room Description: <%= resting_place.room_description %></i></p>
+        <p style="margin-left: 20px"><i>Bed capacity: <%= resting_place.bed_count %></i></p>
+        <b style="margin-left: 20px">Price per night: <%= resting_place.price_per_night %>$</b>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <%= paginate @resorts, theme: 'bootstrap-5',
+                   pagination_class: "pagination-lg flex-wrap justify-content-center",
+                   nav_class: "d-inline-block" %>
+  <h2>Contact Us</h2>
 
-<h2>Contact Us</h2>
+  <%= render 'forms/feedback' %>
+</div>
 
-<%= render 'forms/feedback' %>
