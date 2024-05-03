@@ -7,10 +7,11 @@ class FeedbackRequestsController < ApplicationController
     @feedback_request = FeedbackRequest.new(user_params)
 
     if @feedback_request.save
-      redirect_to root_path, notice: 'Thank you for your message!'
-    else
-      flash[:alert] = 'Oops, something went wrong. Please try again.'
       redirect_to root_path
+      flash[:success] = 'Your message has been sent. Thank you for your message!'
+    else
+      redirect_to root_path
+      flash[:warning] = 'Oops, something went wrong. Please try again.'
     end
   end
 
