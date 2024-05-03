@@ -1,0 +1,31 @@
+<% # debugger %>
+<%= form_with model: @booking_enquiry, url: resort_resting_place_booking_enquiries_path(@resort, @resting_place), method: :post do |form| %>
+    <%= form.hidden_field :resting_place_id, value: @booking_enquiry.resting_place.id %>
+  <div>
+    <%= form.label :name, "Your Name" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+  <div>
+    <%= form.label :email, "Email" %>
+    <%= form.email_field :email %>
+  </div>
+  <div>
+    <%= form.label :phone_number, "Phone Number" %>
+    <%= form.telephone_field :phone_number %>
+  </div>
+  <div>
+    <%= form.label :check_in_date, "Check-In Date" %>
+    <%= form.date_field :check_in_date, required: true %>
+  </div>
+  <div>
+    <%= form.label :check_out_date, "Check-Out Date" %>
+    <%= form.date_field :check_out_date, required: true %>
+  </div>
+  <div>
+    <%= form.label :additional_information, "Additional information" %>
+    <%= form.text_area :additional_information %>
+  </div>
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

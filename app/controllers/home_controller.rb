@@ -5,9 +5,4 @@ class HomeController < ApplicationController
     @resorts = Resort.all
     @feedback_request = FeedbackRequest.new
   end
-
-  # def show
-  #   @resort = Resort.find(params[:id])
-  #   @resting_places = @resort.resting_places
-  # end
 end
