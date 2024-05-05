@@ -1,0 +1,21 @@
+.pagination-filter {
+    margin: 20px 0;
+
+    ul {
+        display: inline-block;
+        margin-left: -25px;
+    }
+
+    li {
+        display: inline-block;
+        list-style-type: none;
+    }
+
+    li a:after {
+        content: ' |';
+    }
+
+    li:last-child a:after {
+        content: '';
+    }
+}
