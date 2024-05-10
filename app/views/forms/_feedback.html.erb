@@ -1,19 +1,21 @@
 <%= form_with model: @feedback_request, url: feedback_requests_path, local: true do |form| %>
   <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, placeholder: "Your Name" %>
+    <%= form.label :name, class: "col-form-label" %>
+    <%= form.text_field :name, placeholder: "Your Name", class: "form-control" %>
   </div>
   <div>
-    <%= form.label :email %>
-    <%= form.email_field :email, placeholder: "Your Email" %>
+    <%= form.label :email, class: "col-form-label" %>
+    <%= form.email_field :email, placeholder: "Your Email", class: "form-control" %>
   </div>
   <div>
-    <%= form.label :phone_number %>
-    <%= form.number_field :phone_number, placeholder: "Your Phone Number" %>
+    <%= form.label :phone_number, class: "col-form-label" %>
+    <%= form.number_field :phone_number, placeholder: "Your Phone Number", class: "form-control" %>
   </div>
   <div>
-    <%= form.label :message %>
-    <%= form.text_area :message, placeholder: "Your Message" %>
+    <%= form.label :message, class: "col-form-label" %>
+    <%= form.text_area :message, placeholder: "Your Message", class: "form-control" %>
   </div>
-  <%= form.submit 'Send' %>
+  <div class="d-grid gap-2">
+    <%= form.submit 'Send', class: "btn btn-primary" %>
+  </div>
 <% end %>

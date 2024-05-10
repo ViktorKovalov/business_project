@@ -1,46 +1,56 @@
 <!-- app/views/home/index.html.erb -->
 <div class='container'>
-  <h1>Welcome to Our Resorts</h1>
-
-  <h2>Our Resorts:</h2>
-  <div class="container">
-    <div class="row">
-      <% @resorts.each do |resort| %>
-        <div class="col-6 d-flex">
-          <div class="card flex-grow-1" style="width: 38rem; padding: 10px; weight: 100%">
-            <img src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h2><%= link_to resort.title, resort_path(resort), class: "btn btn-primary" %></h2>
-              <h5>Hotel Location: <%= resort.location %></h5>
-              <h5>Hotel Description: <%= resort.description %></h5>
-            </div>
-            <% resort.resting_places.each do |resting_place| %>
-              <ul class="list-group list-group-flush">  
-                <li class="list-group-item">
-                  <h3>Room number: <%= resting_place.room_number %></h3>
-                  <p><i>Room Description: <%= resting_place.room_description %></i></p>
-                  <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
-                  <b>Price per night: <%= resting_place.price_per_night %>$ <span class="badge bg-danger">SALE</span></b>
-                </li>
-              </ul>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1 class="text-center">Welcome to Our Resorts</h1>
+      <h2 class="text-center">Our Resorts:</h2>
     </div>
+  </div>
+  <div class="row">
+    <% @resorts.each do |resort| %>
+      <div class="col-6 d-flex">
+        <div class="card flex-grow-1" style="width: 38rem; padding: 10px; weight: 100%">
+          <img src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2><%= link_to resort.title, resort_path(resort), class: "btn btn-primary" %></h2>
+            <h5>Hotel Location: <%= resort.location %></h5>
+            <h5>Hotel Description: <%= resort.description %></h5>
+          </div>
+          <% resort.resting_places.each do |resting_place| %>
+            <ul class="list-group list-group-flush">  
+              <li class="list-group-item">
+                <h3>Room number: <%= resting_place.room_number %></h3>
+                <p><i>Room Description: <%= resting_place.room_description %></i></p>
+                <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
+                <b>Price per night: <%= resting_place.price_per_night %>$ <span class="badge bg-danger">SALE</span></b>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
   
 
   <div class="row justify-content-center">
-    <div class="col-4">
+    <div class="col-3">
       <div class='pagination-filter'>
         <%= paginate @resorts %>
       </div>
     </div>
   </div>
 
-  <h2>Contact Us</h2>
+  <div class="row justify-content-center">
+    <div class="col-2">
+      <h2>Contact Us</h2>
+    </div>
+  </div>
 
-  <%= render 'forms/feedback' %>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <%= render 'forms/feedback' %>
+    </div>
+  </div>
+
 </div>
 
