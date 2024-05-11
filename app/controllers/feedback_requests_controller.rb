@@ -7,6 +7,8 @@ class FeedbackRequestsController < ApplicationController
     @feedback_request = FeedbackRequest.new(user_params)
 
     if @feedback_request.save
+      FeedbackMailer.feedback_received(@feedback_request).deliver_now
+
       redirect_to root_path
       flash[:success] = 'Your message has been sent. Thank you for your message!'
     else

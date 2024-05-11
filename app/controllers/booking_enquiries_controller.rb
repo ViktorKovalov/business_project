@@ -9,6 +9,8 @@ class BookingEnquiriesController < ApplicationController
     @booking_enquiry = @resting_place.booking_enquiries.build(booking_enquiry_params)
 
     if @booking_enquiry.save
+      BookingMailer.booking_confirmation(@booking_enquiry).deliver_now
+
       redirect_to root_path
       flash[:success] = 'Your message has been sent. Thank you for your message!'
     else

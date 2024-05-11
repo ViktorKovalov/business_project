@@ -7,6 +7,7 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 gem 'bootstrap'
 gem 'faker'
 gem 'kaminari'
+gem 'rest-client'
 gem 'sassc-rails'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
