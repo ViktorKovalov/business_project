@@ -7,9 +7,9 @@ class BookingMailer < ApplicationMailer
   def booking_confirmation(booking_enquiry)
     @booking_enquiry = booking_enquiry
 
-    RestClient.post "https://api:977123371671971ba48963170778ab1b-ed54d65c-c36217eb"\
-      "@api.mailgun.net/v3/sandboxc67ad3db61904d9796af8bc0cd5e63da.mailgun.org/messages",
-      :from => "Excited User <mailgun@sandboxc67ad3db61904d9796af8bc0cd5e63da.mailgun.org>",
+    RestClient.post "https://api:#{ENV['MAILGUN_API_KEY']}"\
+      "@api.mailgun.net/v3/#{ENV['MAILGUN_DOMAIN']}/messages",
+      :from => "Excited User <mailgun@#{ENV['MAILGUN_DOMAIN']}>",
       :to => "vityan97@gmail.com",
       :subject => "Booking Confirmation",
       :text => "Your booking has been confirmed. Thank you for choosing our service."
