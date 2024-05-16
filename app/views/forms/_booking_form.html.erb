@@ -2,30 +2,30 @@
 <%= form_with model: @booking_enquiry, url: resort_resting_place_booking_enquiries_path(@resort, @resting_place), method: :post do |form| %>
     <%= form.hidden_field :resting_place_id, value: @booking_enquiry.resting_place.id %>
   <div>
-    <%= form.label :name, "Your Name" %>
-    <%= form.text_field :name, required: true %>
+    <%= form.label :name, "Your Name", class: "col-form-label" %>
+    <%= form.text_field :name, required: true, class: "form-control" %>
   </div>
   <div>
-    <%= form.label :email, "Email" %>
-    <%= form.email_field :email %>
+    <%= form.label :email, "Email", class: "col-form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
   </div>
   <div>
-    <%= form.label :phone_number, "Phone Number" %>
-    <%= form.telephone_field :phone_number %>
+    <%= form.label :phone_number, "Phone Number", class: "col-form-label" %>
+    <%= form.telephone_field :phone_number, class: "form-control" %>
   </div>
   <div>
-    <%= form.label :check_in_date, "Check-In Date" %>
-    <%= form.date_field :check_in_date, required: true %>
+    <%= form.label :check_in_date, "Check-In Date", class: "col-form-label" %>
+    <%= form.date_field :check_in_date, required: true, class: "form-control" %>
   </div>
   <div>
-    <%= form.label :check_out_date, "Check-Out Date" %>
-    <%= form.date_field :check_out_date, required: true %>
+    <%= form.label :check_out_date, "Check-Out Date", class: "col-form-label" %>
+    <%= form.date_field :check_out_date, required: true, class: "form-control" %>
   </div>
   <div>
-    <%= form.label :additional_information, "Additional information" %>
-    <%= form.text_area :additional_information %>
+    <%= form.label :additional_information, "Additional information", class: "col-form-label"%>
+    <%= form.text_area :additional_information, class: "form-control" %>
   </div>
-  <div>
-    <%= form.submit "Submit" %>
+  <div class="d-grid gap-2">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

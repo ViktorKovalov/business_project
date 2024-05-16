@@ -5,7 +5,7 @@ ruby '3.1.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
 gem 'bootstrap'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'faker'
 gem 'kaminari'
 gem 'rest-client'
