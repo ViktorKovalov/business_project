@@ -6,11 +6,11 @@ require 'dotenv/load'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Dotenv::Railtie.load if Rails.env.development? || Rails.env.test?
+Dotenv::Rails.load if Rails.env.development? || Rails.env.test?
 
 module BusinessProject
   class Application < Rails::Application
-
+    config.google_maps_key = ENV['GOOGLE_MAPS_KEY']
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 

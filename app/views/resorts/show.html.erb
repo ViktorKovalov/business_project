@@ -1,19 +1,27 @@
-<h2 style="text-align: center;"><%= @resort.title %></h2>
-<p style="text-align: center;">Hotel Location: <%= @resort.location %></p>
-<p style="text-align: center;">Hotel Description: <%= @resort.description %></p>
+<div class="container">
+  <div class="text-center mb-4">
+    <h2><%= @resort.title %></h2>
+    <p class="lead">Hotel Location: <%= @resort.location %></p>
+    <p>Hotel Description: <%= @resort.description %></p>
+  </div>
 
-<b><p style="text-align: center;">Resting Places</p></b>
-<p style="text-align: center; font-size: 60px; margin-top: 5px; margin-bottom: 20px">☟</p>
+  <div class="text-center">
+    <b><p class="display-6">Resting Places</p></b>
+    <p class="fs-1 mb-5">☟</p>
+  </div>
 
-<!-- Используем flex для размещения по 3 в ряд -->
-<div style="display: flex; flex-wrap: wrap; gap: 20px;"> 
-  <% @resort.resting_places.each do |resting_place| %>
-    <!-- Каждый блок занимает треть ширины, чтобы разместить по 3 в ряд -->
-    <div style="flex: 1 1 30%;"> 
-      <h3>Room number: <%= link_to resting_place.room_number, resort_resting_place_path(@resort, resting_place) %></h3>
-      <p><i>Room Description: <%= resting_place.room_description %></i></p>
-      <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
-      <b>Price per night: <%= resting_place.price_per_night %>$</b>
-    </div>
-  <% end %>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @resort.resting_places.each do |resting_place| %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Room number: <%= link_to resting_place.room_number, resort_resting_place_path(@resort, resting_place) %></h3>
+            <p class="card-text"><i>Room Description: <%= resting_place.room_description %></i></p>
+            <p class="card-text"><i>Bed capacity: <%= resting_place.bed_count %></i></p>
+            <p class="card-text">Price per night: <%= resting_place.price_per_night %>$</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

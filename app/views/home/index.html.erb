@@ -3,7 +3,6 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <h1 class="text-center">Welcome to Our Resorts</h1>
-      <h2 class="text-center">Our Resorts:</h2>
     </div>
   </div>
   <div class="row">
@@ -35,7 +34,9 @@
   <div class="row justify-content-center">
     <div class="col-3">
       <div class='pagination-filter'>
-        <%= paginate @resorts %>
+        <%= paginate @resorts, theme: 'bootstrap-5',
+                   pagination_class: "pagination-sm flex-wrap justify-content-center",
+                   nav_class: "d-inline-block" %>
       </div>
     </div>
   </div>

@@ -1,21 +1,17 @@
-.pagination-filter {
-    margin: 20px 0;
+.pagination {
+    white-space: nowrap;
+    overflow-x: auto;
+    margin-top: 20px;
+}
 
-    ul {
-        display: inline-block;
-        margin-left: -25px;
-    }
+.pagination li a {
+    padding: 0.5rem 0.75rem;
+}
 
-    li {
-        display: inline-block;
-        list-style-type: none;
-    }
+.pagination li a:hover {
+    text-decoration: none;
+}
 
-    li a:after {
-        content: ' |';
-    }
-
-    li:last-child a:after {
-        content: '';
-    }
+.pagination .active a {
+    font-weight: bold;
 }
