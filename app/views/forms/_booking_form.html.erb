@@ -1,6 +1,5 @@
-<% # debugger %>
 <%= form_with model: @booking_enquiry, url: resort_resting_place_booking_enquiries_path(@resort, @resting_place), method: :post do |form| %>
-    <%= form.hidden_field :resting_place_id, value: @booking_enquiry.resting_place.id %>
+  <%= form.hidden_field :resting_place_id, value: @booking_enquiry.resting_place.id %>
   <div>
     <%= form.label :name, "Your Name", class: "col-form-label" %>
     <%= form.text_field :name, required: true, class: "form-control" %>
@@ -15,17 +14,74 @@
   </div>
   <div>
     <%= form.label :check_in_date, "Check-In Date", class: "col-form-label" %>
-    <%= form.date_field :check_in_date, required: true, class: "form-control" %>
+    <%= form.date_field :check_in_date, required: true, class: "form-control", id: "check-in-date" %>
   </div>
   <div>
     <%= form.label :check_out_date, "Check-Out Date", class: "col-form-label" %>
-    <%= form.date_field :check_out_date, required: true, class: "form-control" %>
+    <%= form.date_field :check_out_date, required: true, class: "form-control", id: "check-out-date" %>
   </div>
   <div>
     <%= form.label :additional_information, "Additional information", class: "col-form-label"%>
     <%= form.text_area :additional_information, class: "form-control" %>
   </div>
   <div class="d-grid gap-2">
-    <%= form.submit "Submit", class: "btn btn-primary" %>
+    <%= form.submit "Submit", class: "btn btn-primary", id: "submit-button" %>
   </div>
 <% end %>
+
+
+<script>
+  // Ждем загрузки содержимого документа
+  document.addEventListener("DOMContentLoaded", function() {
+    // Получаем элементы ввода даты заезда и выезда и кнопку отправки
+    const checkInDateInput = document.getElementById("check-in-date");
+    const checkOutDateInput = document.getElementById("check-out-date");
+    const submitButton = document.getElementById("submit-button");
+
+    // Устанавливаем текущую дату в формате YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0];
+    // Устанавливаем завтрашнюю дату в формате YYYY-MM-DD
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowString = tomorrow.toISOString().split('T')[0];
+
+    // Устанавливаем минимальную дату для заезда на сегодня
+    checkInDateInput.min = today;
+    // Устанавливаем минимальную дату для выезда на завтра
+    checkOutDateInput.min = tomorrowString;
+
+    // Добавляем обработчик событий для изменения даты заезда
+    checkInDateInput.addEventListener("change", function() {
+      // Получаем выбранную дату заезда
+      const checkInDate = new Date(checkInDateInput.value);
+      // Устанавливаем следующий день после даты заезда
+      const nextDay = new Date(checkInDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      // Устанавливаем минимальную дату для выезда на следующий день после даты заезда
+      checkOutDateInput.min = nextDay.toISOString().split('T')[0];
+      // Проверяем корректность дат
+      validateDates();
+    });
+
+    // Добавляем обработчик событий для изменения даты выезда
+    checkOutDateInput.addEventListener("change", validateDates);
+
+    // Функция для проверки корректности дат
+    function validateDates() {
+      // Получаем выбранные даты заезда и выезда
+      const checkInDate = new Date(checkInDateInput.value);
+      const checkOutDate = new Date(checkOutDateInput.value);
+
+      // Если даты выбраны и дата заезда раньше даты выезда, включаем кнопку отправки
+      if (checkInDate && checkOutDate && checkInDate < checkOutDate) {
+        submitButton.disabled = false;
+      } else {
+        // Иначе отключаем кнопку отправки
+        submitButton.disabled = true;
+      }
+    }
+
+    // Выполняем проверку дат при загрузке страницы, если поля уже заполнены
+    validateDates();
+  });
+</script>

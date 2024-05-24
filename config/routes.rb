@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :feedback_requests, only: %i[create]
+  resources :feedback_requests, only: %i[new create]
 end

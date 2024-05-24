@@ -10,11 +10,9 @@ class BookingEnquiriesController < ApplicationController
 
     if @booking_enquiry.save
       BookingMailer.booking_confirmation(@booking_enquiry).deliver_now
-
       redirect_to root_path
       flash[:success] = 'Your message has been sent. Thank you for your message!'
     else
-      p @booking_enquiry.errors.full_messages
       redirect_to resort_path(@resting_place.resort)
       flash[:warning] = 'Oops, something went wrong. Please try again.'
     end

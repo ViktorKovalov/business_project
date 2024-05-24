@@ -4,6 +4,5 @@ class HomeController < ApplicationController
   def index
     page_number = params[:page].presence || 1
     @resorts = Resort.page(page_number.to_i).per(2)
-    @feedback_request = FeedbackRequest.new
   end
 end
