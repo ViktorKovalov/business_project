@@ -9,6 +9,7 @@ gem 'bootstrap5-kaminari-views'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'kaminari'
+gem 'open-uri'
 gem 'rest-client'
 gem 'sassc-rails'
 
