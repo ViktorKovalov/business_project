@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'contact', to: 'static_pages#contact'
   get 'terms', to: 'static_pages#terms'
-  resources :resorts, only: %i[show] do
+  resources :resorts do
     resources :resting_places, only: %i[show], controller: 'resting_places' do
       resources :booking_enquiries, only: %i[new create], controller: 'booking_enquiries'
     end

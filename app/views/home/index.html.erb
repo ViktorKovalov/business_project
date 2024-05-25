@@ -1,4 +1,3 @@
-<!-- app/views/home/index.html.erb -->
 <div class='container'>
   <div class="row justify-content-center">
     <div class="col-6">
@@ -9,9 +8,32 @@
     <% @resorts.each do |resort| %>
       <div class="col-6 d-flex">
         <div class="card flex-grow-1" style="width: 38rem; padding: 10px; weight: 100%">
-          <img src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div id="carouselExampleControls<%= resort.id %>" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% if resort.images.attached? %>
+                <% resort.images.each_with_index do |image, index| %>
+                  <div class="carousel-item <%= 'active' if index.zero? %>">
+                    <%= image_tag image, width: 640, height: 400 if image.blob.present? %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="carousel-item active">
+                  <%= image_tag "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Resort" %>
+                </div>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<%= resort.id %>" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<%= resort.id %>" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
           <div class="card-body">
             <h2><%= link_to resort.title, resort_path(resort), class: "btn btn-primary" %></h2>
+            <h2><%= link_to 'Edit', edit_resort_path(resort), class: "btn btn-primary" %></h2>
             <h5>Hotel Location: <%= resort.location %></h5>
             <h5>Hotel Description: <%= resort.description %></h5>
           </div>
@@ -41,4 +63,3 @@
     </div>
   </div>
 </div>
-
