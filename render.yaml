@@ -1,0 +1,23 @@
+# Exported from Render on 2024-05-29T20:34:31Z
+services:
+- type: web
+  name: business_project
+  runtime: ruby
+  repo: https://github.com/ViktorKovalov/business_project
+  plan: free
+  envVars:
+  - key: GOOGLE_MAPS_KEY
+    sync: false
+  - key: TELEGRAM_BOT_TOKEN
+    sync: false
+  - key: MAILGUN_DOMAIN
+    sync: false
+  - key: MAILGUN_API_KEY
+    sync: false
+  - key: WEB_CONCURRENCY
+    sync: false
+  region: frankfurt
+  buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake
+    assets:clean;
+  startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+version: "1"
