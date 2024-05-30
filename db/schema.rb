@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_05_24_205147) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_205147) do
   end
 
   create_table "booking_enquiries", force: :cascade do |t|
-    t.integer "resting_place_id"
+    t.bigint "resting_place_id"
     t.string "name", null: false
     t.string "email", null: false
     t.integer "phone_number", null: false
@@ -81,24 +84,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_205147) do
   create_table "resting_places", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "resort_id", null: false
+    t.bigint "resort_id", null: false
     t.string "room_number"
     t.string "room_description"
     t.integer "bed_count"
     t.decimal "price_per_night"
     t.index ["resort_id"], name: "index_resting_places_on_resort_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
