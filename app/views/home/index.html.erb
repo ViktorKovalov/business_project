@@ -13,12 +13,12 @@
               <% if resort.images.attached? %>
                 <% resort.images.each_with_index do |image, index| %>
                   <div class="carousel-item <%= 'active' if index.zero? %>">
-                    <%= image_tag image, class: 'carousel-image' if image.blob.present? %>
+                    <%= image_tag image, class: 'd-block w-100 carousel-image', alt: 'Resort image' if image.blob.present? %>
                   </div>
                 <% end %>
               <% else %>
                 <div class="carousel-item active">
-                  <%= image_tag "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Resort", class: 'carousel-image' %>
+                  <%= image_tag "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Resort", class: 'd-block w-100 carousel-image', alt: 'Placeholder image' %>
                 </div>
               <% end %>
             </div>
