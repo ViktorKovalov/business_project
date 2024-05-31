@@ -1,13 +1,13 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-12">
       <h1 class="text-center">Welcome to Our Resorts</h1>
     </div>
   </div>
   <div class="row">
     <% @resorts.each do |resort| %>
-      <div class="col-6 d-flex">
-        <div class="card flex-grow-1" style="width: 38rem; padding: 10px; weight: 100%">
+      <div class="col-12 col-md-6 d-flex">
+        <div class="card flex-grow-1" style="padding: 10px;">
           <div id="carouselExampleControls<%= resort.id %>" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <% if resort.images.attached? %>
@@ -52,9 +52,8 @@
     <% end %>
   </div>
   
-
   <div class="row justify-content-center">
-    <div class="col-3">
+    <div class="col-12 col-md-3">
       <div class='pagination-filter'>
         <%= paginate @resorts, theme: 'bootstrap-5',
                    pagination_class: "pagination-sm flex-wrap justify-content-center",
