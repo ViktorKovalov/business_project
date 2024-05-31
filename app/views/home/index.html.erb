@@ -13,12 +13,12 @@
               <% if resort.images.attached? %>
                 <% resort.images.each_with_index do |image, index| %>
                   <div class="carousel-item <%= 'active' if index.zero? %>">
-                    <%= image_tag image, width: 640, height: 400 if image.blob.present? %>
+                    <%= image_tag image, class: 'carousel-image' if image.blob.present? %>
                   </div>
                 <% end %>
               <% else %>
                 <div class="carousel-item active">
-                  <%= image_tag "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Resort" %>
+                  <%= image_tag "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Resort", class: 'carousel-image' %>
                 </div>
               <% end %>
             </div>
@@ -38,7 +38,7 @@
             <h5>Hotel Description: <%= resort.description %></h5>
           </div>
           <% resort.resting_places.each do |resting_place| %>
-            <ul class="list-group list-group-flush">  
+            <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <h3>Room number: <%= resting_place.room_number %></h3>
                 <p><i>Room Description: <%= resting_place.room_description %></i></p>
@@ -51,7 +51,7 @@
       </div>
     <% end %>
   </div>
-  
+
   <div class="row justify-content-center">
     <div class="col-12 col-md-3">
       <div class='pagination-filter'>
