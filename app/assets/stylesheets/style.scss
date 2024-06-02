@@ -1,9 +1,64 @@
+.alert.alert-notice {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #000;
+    background-color: #05eb70;
+    border-color: #013318;
+    width: 100%;
+}
+
+.alert.alert-alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #000;
+    background-color: #fc6060;
+    border-color: #631111;
+    width: 100%;
+}
+
 .carousel-image {
     width: 640px;
     height: 400px;
 }
 
+.navbar-nav .nav-link.btn {
+    margin: 0 5px;
+}
+
+.navbar-nav .nav-link {
+    color: #000;
+    /* Задайте нужный цвет текста */
+}
+
+.navbar-nav .nav-link.btn-primary {
+    background-color: #5e5bfc;
+    border-color: #1e1d61;
+}
+
+.navbar-nav .nav-link.btn-primary:hover {
+    background-color: #0703fc;
+}
+
+.navbar-nav .nav-link.btn-danger {
+    background-color: #fc6060;
+    border-color: #631111;
+}
+
+.navbar-nav .nav-link.btn-danger:hover {
+    background-color: #fc2626;
+}
+
+
 @media (max-width: 1100px) {
+    .navbar-nav .nav-item .nav-link {
+        text-align: center;
+        width: 100%;
+    }
+
     .col-6 {
         flex: 0 0 100%;
         max-width: 100%;
@@ -14,12 +69,12 @@
     }
 
     .carousel-item img {
-        width: 100%;
-        height: auto;
+        width: 200px;
+        height: 320px;
     }
 
     .carousel-image {
-        width: 100%;
-        height: auto;
+        width: 200px;
+        height: 320px;
     }
 }

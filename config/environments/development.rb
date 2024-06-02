@@ -1,8 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "2951-2a02-830a-b288-b700-31d7-2fbb-929d-7090.ngrok-free.app"
-  config.hosts << "2951-2a02-830a-b288-b700-31d7-2fbb-929d-7090.ngrok-free.app"
+  config.hosts << "preferably-modest-maggot.ngrok-free.app"
+  config.hosts << "preferably-modest-maggot.ngrok-free.app"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

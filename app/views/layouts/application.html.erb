@@ -20,7 +20,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <%= link_to 'About', about_path, class: "nav-link #{'active' if current_page?(about_path)}" %>
               </li>
@@ -31,12 +31,41 @@
                 <%= link_to 'Terms', terms_path, class: "nav-link #{'active' if current_page?(terms_path)}" %>
               </li>
             </ul>
+            <hr>
+            <% if user_signed_in? %>
+              <ul class="navbar-nav ms-auto d-none d-lg-flex">
+                <li class="nav-item">
+                  <%= link_to current_user.email, edit_user_registration_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-danger' %>
+                </li>
+              </ul>
+              <ul class="navbar-nav d-lg-none">
+                <li class="nav-item">
+                  <%= link_to current_user.email, edit_user_registration_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-danger' %>
+                </li>
+              </ul>
+            <% else %>
+              <ul class="navbar-nav ms-auto d-none d-lg-flex">
+                <li class="nav-item">
+                  <%= link_to 'Sign In', new_user_session_path, class: 'nav-link btn btn-primary' %>
+                </li>
+              </ul>
+              <ul class="navbar-nav d-lg-none">
+                <li class="nav-item">
+                  <%= link_to 'Sign In', new_user_session_path, class: 'nav-link btn btn-primary' %>
+                </li>
+              </ul>
+            <% end %>
           </div>
         </div>
       </nav>
       <%= render 'shared/flash' %>
       <%= yield %>
     </div>
-      <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
