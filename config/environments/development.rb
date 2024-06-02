@@ -1,8 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "2cde-2a02-830a-b288-b700-34d6-5fd5-e84b-4418.ngrok-free.app"
-  config.hosts << "2cde-2a02-830a-b288-b700-34d6-5fd5-e84b-4418.ngrok-free.app"
+  config.hosts << "2951-2a02-830a-b288-b700-31d7-2fbb-929d-7090.ngrok-free.app"
+  config.hosts << "2951-2a02-830a-b288-b700-31d7-2fbb-929d-7090.ngrok-free.app"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -39,6 +39,8 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
