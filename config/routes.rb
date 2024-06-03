@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'user_profile/show'
   devise_for :admins
   devise_for :users
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'contact', to: 'static_pages#contact'
   get 'terms', to: 'static_pages#terms'
+
+  resource :user_profile, only: %i[show], controller: 'user_profile'
 
   resources :resorts do
     member do

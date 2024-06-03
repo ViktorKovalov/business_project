@@ -35,6 +35,11 @@
               <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
             </div>
 
+            <div class="mb-3">
+              <%= f.label :Upload_your_avatar, class: "form-label" %>
+              <%= f.file_field :avatar, class: "form-control" %>
+            </div>
+
             <div class="mb-3 d-grid">
               <%= f.submit "Update", class: "btn btn-primary" %>
             </div>
