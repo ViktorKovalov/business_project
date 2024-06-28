@@ -1,7 +1,10 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <div class="col-12">
-      <h1 class="text-center">Welcome to Our Resorts</h1>
+    <div class="col-12 text-center"> <!-- Центрируем содержимое в колонке -->
+      <h1>Welcome to Our Resorts</h1>
+    </div>
+    <div class="col-12 d-flex justify-content-end align-items-center mb-3"> <!-- Выравниваем кнопку справа -->
+      <%= link_to 'Add New Resort', new_resort_path, class: 'btn btn-primary' %>
     </div>
   </div>
   <div class="row">
