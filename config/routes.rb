@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   get 'user_profile/show'
   devise_for :admins
-  devise_for :users
+  devise_for :users, controllers: { }
 
   root 'home#index'
   get 'about', to: 'static_pages#about'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     member do
       delete :delete_image
     end
-    resources :resting_places, only: %i[show], controller: 'resting_places' do
+    resources :resting_places, controller: 'resting_places' do
       resources :booking_enquiries, only: %i[new create], controller: 'booking_enquiries'
     end
   end

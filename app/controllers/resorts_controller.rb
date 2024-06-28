@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ResortsController < ApplicationController
-  before_action :set_resort, only: %i[show edit update delete_image]
+  before_action :set_resort, only: %i[show edit update destroy delete_image]
   def show
     @resting_places = @resort.resting_places
   end
@@ -13,7 +13,8 @@ class ResortsController < ApplicationController
   def create
     @resort = Resort.new(resort_params)
     if @resort.save
-      redirect_to @resort, notice: 'Resort was successfully created.'
+      redirect_to @resort
+      flash[:success] = 'Resort was successfully created.'
     else
       render :new
     end
@@ -31,6 +32,12 @@ class ResortsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @resort.destroy
+    redirect_to root_path
+    flash[:success] = 'Resort was successfully deleted.'
   end
 
   def delete_image
