@@ -42,7 +42,7 @@
 
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @resort.resting_places.each do |resting_place| %>
-      <div class="col">
+      <div class="col mb-4">
         <div class="card h-100">
           <div class="card-body">
             <h3 class="card-title">Room number: <%= link_to resting_place.room_number, resort_resting_place_path(@resort, resting_place) %></h3>
