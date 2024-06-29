@@ -1,37 +1,50 @@
-<%= form_with(model: @resort, local: true) do |form| %>
-  <div class="mb-3">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+          <h2>Update Resort</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: @resort, local: true) do |form| %>
+            <div class="mb-3">
+              <%= form.label :title, class: "form-label" %>
+              <%= form.text_field :title, class: "form-control" %>
+            </div>
 
-  <div class="mb-3">
-    <%= form.label :description, class: "form-label" %>
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
+            <div class="mb-3">
+              <%= form.label :description, class: "form-label" %>
+              <%= form.text_area :description, rows: 5, class: "form-control" %>
+            </div>
 
-  <div class="mb-3">
-    <%= form.label :location, class: "form-label" %>
-    <%= form.text_field :location, class: "form-control" %>
-  </div>
+            <div class="mb-3">
+              <%= form.label :location, class: "form-label" %>
+              <%= form.text_field :location, class: "form-control" %>
+            </div>
 
-  <div class="mb-3">
-    <%= form.label :images, "Upload Images", class: "form-label" %>
-    <%= form.file_field :images, multiple: true, class: "form-control" %>
-  </div>
+            <div class="mb-3">
+              <%= form.label :images, "Upload Images", class: "form-label" %>
+              <%= form.file_field :images, multiple: true, class: "form-control" %>
+            </div>
 
-  <div class="row mb-3">
-    <% @resort.images.each do |image| %>
-      <div class="col-md-2 mb-3 position-relative">
-        <%= image_tag image, height: 100, class: "mb-3 img-thumbnail" %>
-        <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" data-image-id="<%= image.id %>">&times;</button>
+            <div class="row mb-3">
+              <% @resort.images.each do |image| %>
+                <div class="col-md-2 mb-3 position-relative">
+                  <%= image_tag image, height: 100, class: "mb-3 img-thumbnail" %>
+                  <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" data-image-id="<%= image.id %>">&times;</button>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="d-grid">
+              <%= form.submit "Update Resort", class: "btn btn-primary btn-block" %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
-
-  <div class="mb-3">
-    <%= form.submit "Update Resort", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

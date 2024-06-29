@@ -2,22 +2,10 @@
 
 class ResortsController < ApplicationController
   before_action :set_resort, only: %i[show edit update destroy delete_image]
+
   def show
-    @resting_places = @resort.resting_places
-  end
-
-  def new
-    @resort = Resort.new
-  end
-
-  def create
-    @resort = Resort.new(resort_params)
-    if @resort.save
-      redirect_to @resort
-      flash[:success] = 'Resort was successfully created.'
-    else
-      render :new
-    end
+    page_number = params[:page].presence || 1
+    @resting_places = @resort.resting_places.page(page_number.to_i).per(3).order(created_at: :desc)
   end
 
   def edit; end

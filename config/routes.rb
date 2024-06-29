@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :resorts do
     member do
       delete :delete_image
+      get :new_resting_place
+      post :create_resting_place
     end
     resources :resting_places, controller: 'resting_places' do
       resources :booking_enquiries, only: %i[new create], controller: 'booking_enquiries'

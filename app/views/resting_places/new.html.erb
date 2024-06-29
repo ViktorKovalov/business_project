@@ -1,0 +1,36 @@
+<!-- app/views/resting_places/new.html.erb -->
+
+<div class="container mt-5 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+          <h2>Add New Resting Place</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: [@resort, @resting_place], url: resort_resting_places_path(@resort), method: :post) do |form| %>
+            <div class="mb-3">
+              <%= form.label :room_number, "Room Number", class: "form-label" %>
+              <%= form.text_field :room_number, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= form.label :room_description, "Room Description", class: "form-label" %>
+              <%= form.text_area :room_description, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= form.label :bed_count, "Bed Count", class: "form-label" %>
+              <%= form.number_field :bed_count, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= form.label :price_per_night, "Price per Night ($)", class: "form-label" %>
+              <%= form.number_field :price_per_night, class: "form-control" %>
+            </div>
+            <div class="d-grid gap-2">
+              <%= form.submit "Create Resting Place", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
