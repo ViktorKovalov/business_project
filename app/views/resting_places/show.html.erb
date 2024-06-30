@@ -38,6 +38,29 @@
     </div>
 
     <%= render 'forms/booking_form' %>
+    <%= render 'forms/reviews_form', resting_place: @resting_place %>
+      
+      <h3 class="reviews-title">Reviews</h3>
+      
+      <% @resting_place.reviews.order(created_at: :desc).each do |review| %>
+        <div class="card review-card mb-3">
+          <div class="card-body">
+            <p><%= review.content %></p>
+            <p class="text-muted"><small>by <%= review.user.email %> on <%= review.created_at.strftime("%B %d, %Y") %></small></p>
+            <% if user_signed_in? && review.user == current_user %>
+              <%= button_to 'Delete', { controller: 'reviews',
+                                        action: 'destroy',
+                                        resort_id: @resting_place.resort.id, 
+                                        resting_place_id: @resting_place.id, 
+                                        id: review.id }, 
+                                        method: :delete, 
+                                        data: { confirm: 'Are you sure?' }, 
+                                        class: "btn btn-danger btn-sm" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
   </div>
 </body>
 </html>

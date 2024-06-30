@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       post :create_resting_place
     end
     resources :resting_places, controller: 'resting_places' do
+      resources :reviews, only: %i[create destroy], controller: 'reviews'
       resources :booking_enquiries, only: %i[new create], controller: 'booking_enquiries'
     end
   end

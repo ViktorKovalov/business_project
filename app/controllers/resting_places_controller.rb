@@ -8,14 +8,17 @@ class RestingPlacesController < ApplicationController
     @resting_place = @resort.resting_places.build(resting_place_params)
 
     if @resting_place.save
-      redirect_to @resort, notice: "Resting Place was successfully created."
+      redirect_to @resort
+      flash[:success] = "Resting Place was successfully created."
     else
       render :new
     end
   end
+
   def show
     @resting_place = RestingPlace.find(params[:id])
     @booking_enquiry = @resting_place.booking_enquiries.build
+    @reviews = @resting_place.reviews
   end
 
   private

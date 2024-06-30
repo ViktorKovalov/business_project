@@ -52,6 +52,19 @@
     background-color: #fc2626;
 }
 
+.review-form-container {
+    background-color: #f8f9fa;
+    /* Светло-серый фон */
+    padding: 20px;
+    /* Внутренние отступы */
+    border-radius: 5px;
+    /* Скругленные углы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Легкая тень */
+    margin-bottom: 20px;
+    /* Отступ снизу */
+}
+
 
 @media (max-width: 1100px) {
     .navbar-nav .nav-item .nav-link {

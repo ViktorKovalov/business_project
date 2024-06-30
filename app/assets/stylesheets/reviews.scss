@@ -1,0 +1,75 @@
+.review-form-container {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.review-form-title {
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.review-form-container .form-label {
+    font-weight: bold;
+}
+
+.review-form-container .review-textarea {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    resize: none;
+}
+
+.review-form-container .review-textarea:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+.review-form-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.review-form-container .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.review-form-container .review-login-message {
+    color: #343a40;
+    text-align: center;
+}
+
+.reviews-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.review-card {
+    background-color: #e0f7fa;
+    /* светло-бирюзовый фон */
+    border: 1px solid #dee2e6;
+}
+
+.review-card .card-body {
+    padding: 15px;
+}
+
+.review-card .btn-danger {
+    float: right;
+}
+
+
+.review-form-container {
+    background-color: #f8f9fa;
+    /* Светло-серый фон */
+    padding: 20px;
+    /* Внутренние отступы */
+    border-radius: 5px;
+    /* Скругленные углы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Легкая тень */
+    margin-bottom: 20px;
+    /* Отступ снизу */
+}

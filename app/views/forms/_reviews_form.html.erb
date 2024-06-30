@@ -1,0 +1,16 @@
+<div class="review-form-container">
+  <% if user_signed_in? %>
+    <h3 class="review-form-title">Leave a Review</h3>
+    <%= form_with(model: [@resting_place.resort, @resting_place, @resting_place.reviews.build], local: true) do |form| %>
+      <div class="form-group">
+        <%= form.label :content, "Your Review", class: "form-label" %>
+        <%= form.text_area :content, class: "form-control review-textarea", rows: 4 %>
+      </div>
+      <div class="form-group text-right">
+        <%= form.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="review-login-message">To leave a review, please <a href="<%= new_user_session_path %>">log in</a> or <a href="<%= new_user_registration_path %>">sign up</a>.</p>
+  <% end %>
+</div>
