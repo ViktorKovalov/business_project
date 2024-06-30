@@ -1,0 +1,30 @@
+.btn-orange {
+    background-color: #ffa500;
+    color: white;
+}
+
+.btn-orange:hover {
+    background-color: #e69500;
+    color: white;
+}
+
+.beautiful-text {
+    font-size: 24px;
+    /* Размер шрифта */
+    font-weight: bold;
+    /* Жирный шрифт */
+    color: #FFA500;
+    /* Оранжевый цвет */
+    text-transform: uppercase;
+    /* Преобразование текста в верхний регистр */
+}
+
+.view-more {
+    display: block;
+    width: calc(100% - 20px);
+    /* Полная ширина карточки минус отступы */
+    margin: 0 auto;
+    /* Центрирование */
+    border-radius: 20px;
+    /* Закругленные углы */
+}

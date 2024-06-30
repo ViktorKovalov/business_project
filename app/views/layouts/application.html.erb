@@ -12,62 +12,62 @@
   
   <body>
     <div class='container'> 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <!-- Логотип -->
-    <a class="navbar-brand" href="/">Hotels</a>
-    <!-- Кнопка гамбургера -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Навигация -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <%= link_to 'About', about_path, class: "nav-link #{'active' if current_page?(about_path)}" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Contact', contact_path, class: "nav-link #{'active' if current_page?(contact_path)}" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Terms', terms_path, class: "nav-link #{'active' if current_page?(terms_path)}" %>
-        </li>
-      </ul>
-      <!-- Секция для пользователя -->
-      <% if user_signed_in? %>
-        <div class="navbar-nav ms-auto"> <!-- Смещение аватара и email вправо -->
-          <% if current_user.avatar.attached? %>
-            <!-- Для ПК -->
-            <li class="nav-item me-lg-3 d-lg-block d-none">
-              <%= link_to user_profile_path do %>
-                <%= image_tag current_user.avatar, class: "rounded-circle", style: "width: 40px; height: 40px; object-fit: cover;" %>
-              <% end %>
-            </li>
-          <% else %>
-            <!-- Если аватар не загружен, используем плейсхолдер -->
-            <li class="nav-item me-lg-3 d-lg-block d-none">
-              <%= link_to user_profile_path do %>
-                <%= image_tag 'https://avatar.iran.liara.run/public/47', class: "rounded-circle", style: "width: 40px; height: 40px; object-fit: cover;" %>
-              <% end %>
-            </li>
-          <% end %>
-          <li class="nav-item me-lg-3">
-            <span class="nav-link"><%= current_user.email %></span>
-          </li>
-          <li class="nav-item">
-            <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-danger' %>
-          </li>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <!-- Логотип -->
+          <a class="navbar-brand" href="/">Hotels</a>
+          <!-- Кнопка гамбургера -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Навигация -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <%= link_to 'About', about_path, class: "nav-link #{'active' if current_page?(about_path)}" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Contact', contact_path, class: "nav-link #{'active' if current_page?(contact_path)}" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Terms', terms_path, class: "nav-link #{'active' if current_page?(terms_path)}" %>
+              </li>
+            </ul>
+            <!-- Секция для пользователя -->
+            <% if user_signed_in? %>
+              <div class="navbar-nav ms-auto"> <!-- Смещение аватара и email вправо -->
+                <% if current_user.avatar.attached? %>
+                  <!-- Для ПК -->
+                  <li class="nav-item me-lg-3 d-lg-block d-none">
+                    <%= link_to user_profile_path do %>
+                      <%= image_tag current_user.avatar, class: "rounded-circle", style: "width: 40px; height: 40px; object-fit: cover;" %>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <!-- Если аватар не загружен, используем плейсхолдер -->
+                  <li class="nav-item me-lg-3 d-lg-block d-none">
+                    <%= link_to user_profile_path do %>
+                      <%= image_tag 'https://avatar.iran.liara.run/public/47', class: "rounded-circle", style: "width: 40px; height: 40px; object-fit: cover;" %>
+                    <% end %>
+                  </li>
+                <% end %>
+                <li class="nav-item me-lg-3">
+                  <span class="nav-link"><%= current_user.email %></span>
+                </li>
+                <li class="nav-item">
+                  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-danger' %>
+                </li>
+              </div>
+            <% else %>
+              <ul class="navbar-nav ms-auto"> <!-- Смещение кнопки входа вправо -->
+                <li class="nav-item">
+                  <%= link_to 'Sign In', new_user_session_path, class: 'nav-link btn btn-primary' %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
         </div>
-      <% else %>
-        <ul class="navbar-nav ms-auto"> <!-- Смещение кнопки входа вправо -->
-          <li class="nav-item">
-            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link btn btn-primary' %>
-          </li>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-</nav>
+      </nav>
       <%= render 'shared/flash' %>
       <%= yield %>
     </div>
