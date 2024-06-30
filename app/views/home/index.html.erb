@@ -1,9 +1,9 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <div class="col-12 text-center"> <!-- Центрируем содержимое в колонке -->
+    <div class="col-12 text-center">
       <h1>Welcome to Our Resorts</h1>
     </div>
-    <div class="col-12 d-flex justify-content-end align-items-center mb-3"> <!-- Выравниваем кнопку справа -->
+    <div class="col-12 d-flex justify-content-end align-items-center mb-3">
       <%= link_to 'Add New Resort', new_resort_path, class: 'btn btn-primary' %>
     </div>
   </div>
@@ -34,22 +34,36 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-          <div class="card-body">
-            <h2><%= link_to resort.title, resort_path(resort), class: "btn btn-primary" %></h2>
-            <h2><%= link_to 'Edit', edit_resort_path(resort), class: "btn btn-primary" %></h2>
+          <div class="card-body text-center">
+            <div class="beautiful-text">
+              <%= resort.title %>
+            </div>
+            <h2><%= link_to 'Edit', edit_resort_path(resort), class: "btn btn-primary mt-2" %></h2>
             <h5>Hotel Location: <%= resort.location %></h5>
             <h5>Hotel Description: <%= resort.description %></h5>
+            <div class="d-flex justify-content-center mt-3 d-md-none">
+              <!-- Show/Hide button for mobile only -->
+              <button class="btn btn-orange show-hide-rooms" type="button" data-bs-toggle="collapse" data-bs-target="#restingPlaces<%= resort.id %>" aria-expanded="false" aria-controls="restingPlaces<%= resort.id %>">
+                Show rooms
+              </button>
+            </div>
           </div>
-          <% resort.resting_places.each do |resting_place| %>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <h3>Room number: <%= resting_place.room_number %></h3>
-                <p><i>Room Description: <%= resting_place.room_description %></i></p>
-                <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
-                <b>Price per night: <%= resting_place.price_per_night %>$ <span class="badge bg-danger">SALE</span></b>
-              </li>
-            </ul>
-          <% end %>
+          <div id="restingPlaces<%= resort.id %>" class="collapse d-md-block">
+            <% resort.resting_places.limit(3).each do |resting_place| %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <h3>Room number: <%= resting_place.room_number %></h3>
+                  <p><i>Room Description: <%= resting_place.room_description %></i></p>
+                  <p><i>Bed capacity: <%= resting_place.bed_count %></i></p>
+                  <b>Price per night: <%= resting_place.price_per_night %>$ <span class="badge bg-danger">SALE</span></b>
+                </li>
+              </ul>
+            <% end %>
+            <!-- View more button -->
+            <div class="text-center mt-2">
+              <a href="<%= resort_path(resort) %>" class="btn btn-primary view-more">View more</a>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
@@ -65,3 +79,62 @@
     </div>
   </div>
 </div>
+
+<style>
+  .btn-orange {
+    background-color: #ffa500;
+    color: white;
+  }
+  .btn-orange:hover {
+    background-color: #e69500;
+    color: white;
+  }
+  .beautiful-text {
+    font-size: 24px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: #FFA500; /* Оранжевый цвет */
+    text-transform: uppercase; /* Преобразование текста в верхний регистр */
+  }
+  .view-more {
+    display: block;
+    width: calc(100% - 20px); /* Полная ширина карточки минус отступы */
+    margin: 0 auto; /* Центрирование */
+    border-radius: 20px; /* Закругленные углы */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const showHideButtons = document.querySelectorAll(".show-hide-rooms");
+
+    showHideButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const collapse = document.querySelector(this.dataset.bsTarget);
+        const viewMoreButton = collapse.querySelector(".view-more");
+
+        // Check if the collapse is currently shown
+        if (collapse.classList.contains("show")) {
+          this.textContent = "Show rooms"; // Change button text to "Show rooms" when collapse is hidden
+          viewMoreButton.classList.add("d-none"); // Hide view more button
+        } else {
+          this.textContent = "Hide rooms"; // Change button text to "Hide rooms" when collapse is shown
+          viewMoreButton.classList.remove("d-none"); // Show view more button
+        }
+      });
+
+      // Initial state of the button (needed when collapse is manually opened/closed by Bootstrap)
+      const collapse = document.querySelector(button.dataset.bsTarget);
+      collapse.addEventListener('show.bs.collapse', function () {
+        button.textContent = "Hide rooms"; // Set button text to "Hide rooms" on collapse show
+        const viewMoreButton = collapse.querySelector(".view-more");
+        viewMoreButton.classList.remove("d-none"); // Show view more button on collapse show
+      });
+
+      collapse.addEventListener('hide.bs.collapse', function () {
+        button.textContent = "Show rooms"; // Set button text to "Show rooms" on collapse hide
+        const viewMoreButton = collapse.querySelector(".view-more");
+        viewMoreButton.classList.add("d-none"); // Hide view more button on collapse hide
+      });
+    });
+  });
+</script>
