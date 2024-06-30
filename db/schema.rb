@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_02_181529) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_30_181043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,6 +102,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_02_181529) do
     t.integer "bed_count"
     t.decimal "price_per_night"
     t.index ["resort_id"], name: "index_resting_places_on_resort_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "resting_place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resting_place_id"], name: "index_reviews_on_resting_place_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
